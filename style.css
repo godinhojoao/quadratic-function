@@ -107,6 +107,10 @@ div.value {
     border-radius: .5rem;
 }
 
+input {
+    padding: .4rem;
+}
+
 div.value input {
     width: 10rem;
     height: 2.3rem;
