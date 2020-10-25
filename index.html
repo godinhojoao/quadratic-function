@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Função Quadrática</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1 class="very-weight">Função Quadrática</h1>
+    </header>
+
+    <main>
+        <div id="container-wich-is">
+            <img src="./images/bhaskara.png" alt="bhaskara">
+            <p>
+                Também chamada de função do segundo grau, é expressa como
+                <span class="very-weight">f(x) = ax² + bx + c ou y = ax² + bx+ c</span>, sendo que os coeficientes
+                "a, b e c" números reais e "a" diferente de 0 (zero).
+            </p>
+        </div>
+
+        <h2 class="very-weight">Digite os valores abaixo:</h2>
+
+        <div id="query" class="normal-border">
+            <div id="values-container">
+                <div class="value">
+                    <label for="a" class="very-weight">a</label>
+                    <input name="a" id="a" class="normal-border" value="1">
+                </div>
+                <span> x2 +</span>
+
+                <div class="value">
+                    <label for="b" class="very-weight">b</label>
+                    <input name="b" id="b" class="normal-border" value="1">
+                </div>
+                <span> x +</span>
+
+                <div class="value">
+                    <label for="c" class="very-weight">c</label>
+                    <input name="c" id="c" class="normal-border" value="1">
+                </div>
+                <span>= 0</span>
+
+            </div>
+
+            <button class="solve normal-border">Calcular</button>
+        </div>
+
+        <div class="results">
+            <h2 class="very-weight">Resultados:</h2>
+
+            <div class="result">
+                <label for="x-one">x'=</label>
+                <input name="x-one" id="x-one" class="normal-border">
+            </div>
+
+            <div class="result">
+                <label for="x-two">x"=</label>
+                <input name="x-two" id="x-two" class="normal-border">
+            </div>
+
+            <div class="result">
+                <label for="delta">Discriminante (Δ) =</label>
+                <input name="delta" id="delta" class="normal-border">
+            </div>
+
+            <div class="result">
+                <label for="opening">Concavidade da parábola (Abertura) para:</label>
+                <input name="opening" id="opening" class="normal-border">
+            </div>
+
+            <div class="result">
+                <label for="vertex">Vértices (x, y) =</label>
+                <input name="vertex" id="vertex" class="normal-border">
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
