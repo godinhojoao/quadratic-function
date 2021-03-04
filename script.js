@@ -7,11 +7,11 @@
         let valueA = document.querySelector('input#a').value.trim();
         let valueB = document.querySelector('input#b').value.trim();
         let valueC = document.querySelector('input#c').value.trim();
-        let delta = (valueB ** 2) - (4 * valueA * valueC);
+        let delta;
         let allValues = [valueA, valueB, valueC];
 
         let haveNanValue = allValues.map((element, index) => {
-            element === '' ? allValues.splice(index, 1, 0) : 0;
+            element === "" ? allValues.splice(index, 1, '0') : 0;
 
             if (isNaN(element)) {
                 let value = element === '' ? 0 : 1;
@@ -23,6 +23,8 @@
 
         [valueA, valueB, valueC] = allValues;
 
+        delta = (parseFloat(valueB) ** 2) - (4 * parseFloat(valueA) * parseFloat(valueC));
+
         if (haveNanValue.indexOf(1) > -1) {
             let closeButton = createCustomAlert('./images/abc.png', 'Não digite nada além de <span class="very-weight">números</span>.');
 
@@ -31,15 +33,16 @@
             // deixando os inputs vazios
             showResults('', ['', ''], '', '', '');
         }
-        else if (valueA === 0 || delta < 0) {
+        else if (valueA === '0' || delta < 0) {
             let message = '';
             let imgSrc = '';
+            let closeButton;
 
-            message = valueA === 0 ? 'O valor de <span class="very-weight">a</span> não pode ser <span class="very-weight">igual a 0</span>.' : 'O delta é <span class="very-weight">negativo</span>, sem raízes.';
+            message = valueA === '0' ? 'O valor de <span class="very-weight">a</span> não pode ser <span class="very-weight">igual a 0</span>.' : 'O delta é <span class="very-weight">negativo</span>, sem raízes.';
 
-            imgSrc = valueA === 0 ? './images/zero.png' : './images/delta.png';
+            imgSrc = valueA === '0' ? './images/zero.png' : './images/delta.png';
 
-            let closeButton = createCustomAlert(imgSrc, message);
+            closeButton = createCustomAlert(imgSrc, message);
 
             closeButton.addEventListener('click', closeAlertAndAdjust);
 
@@ -55,29 +58,21 @@
 
     function createCustomAlert(imageSrc, message) {
         let alertContainer = document.createElement('div');
-        let alertBox = document.createElement('div');
-        let image = document.createElement('img');
-        let h2 = document.createElement('h2');
-        let closeButton = document.createElement('button');
-
+        let alertBox =`
+            <div class="alert-box normal-border"> 
+                <img src="${imageSrc}" />
+                <h2> ${message} </h2>
+                <button class="normal-border close">Fechar</button>
+                <h2 class=""></h2>
+            </div>
+        `;
+        let closeButton;
+       
         alertContainer.classList.add('alert');
-
-        alertBox.classList.add('alert-box');
-        alertBox.classList.add('normal-border');
-
-        image.src = imageSrc;
-        h2.innerHTML = message;
-
-        closeButton.classList.add('normal-border');
-        closeButton.innerText = 'Fechar';
-
-        alertBox.insertAdjacentElement('afterbegin', closeButton);
-        alertBox.insertAdjacentElement('afterbegin', h2);
-        alertBox.insertAdjacentElement('afterbegin', image);
-
-        alertContainer.appendChild(alertBox);
-
+        alertContainer.innerHTML = alertBox;
         document.body.appendChild(alertContainer);
+
+        closeButton = document.querySelector('button.close');
 
         return closeButton;
     };
